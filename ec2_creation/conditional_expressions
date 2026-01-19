@@ -1,0 +1,32 @@
+#you want make set up if env is prod then storage size will be 20 if not then it should 15
+
+#1. add one variable in variables.tf
+
+
+variable "ec2_root_storage_size" {
+    default = 15
+    type = number
+    description = "specify the storage size"
+}
+
+variable "env" {
+    default = "prd"
+    type = string
+  
+}
+
+#2. 
+
+resource "aws_instance" "my_instance" {
+    key_name = "aws_key_pair.my_key.key_name
+    security_groups = [aws_security_group.my_security_group.name]
+    instance_type = var.ec2_instance_type
+    ami = "ami-0ecb62995f68bb549" # ubuntu
+    user_data = file ("install_nginx.sh")
+}
+
+root_block_device {
+     volume_size = var.env == "prd" ? 20 : var.ec2_root_storage_size
+     volume_type = "gp3"
+
+

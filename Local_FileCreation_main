@@ -1,0 +1,4 @@
+resource "local_file" "my_file" {
+  filename = "Automate.txt"
+  content  = "helps to reduce the manual effort"
+}
