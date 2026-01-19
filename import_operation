@@ -1,0 +1,27 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "6.28.0"
+    }
+  }
+}
+
+provider "aws" {
+    region = "us-east-1"
+    access_key = ""
+    secret_key = ""
+
+}
+
+
+resource "aws_instance" "my_new_instance" {
+    ami = "unknown"
+    instance_type = "unknown"
+
+}
+
+#terraform import aws_instance.my_new_instance i-06e6ca0e0e12b14fe
+#terraform state list
+#terraform state show
+
